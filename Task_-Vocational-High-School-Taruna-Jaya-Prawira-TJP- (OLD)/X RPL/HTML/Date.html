@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penampil Waktu Real-time</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .clock {
+            font-size: 72px;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .date-info {
+            font-size: 18px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .date-info span {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .day-name {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⏰ Waktu Terkini</h1>
+        <div class="clock" id="clock">00:00:00</div>
+        <div class="date-info">
+            <span class="day-name" id="dayName">Senin</span>
+            <span id="dateInfo">1 Januari 2025</span>
+        </div>
+    </div>
+
+    <script>
+        // Array nama hari dalam bahasa Indonesia
+        const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        
+        // Array nama bulan dalam bahasa Indonesia
+        const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                       'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+        function updateClock() {
+            // Ambil waktu saat ini
+            const now = new Date();
+            
+            // Format jam (HH:MM:SS)
+            let jam = String(now.getHours()).padStart(2, '0');
+            let menit = String(now.getMinutes()).padStart(2, '0');
+            let detik = String(now.getSeconds()).padStart(2, '0');
+            
+            const timeString = `${jam}:${menit}:${detik}`;
+            
+            // Update tampilan jam
+            document.getElementById('clock').textContent = timeString;
+            
+            // Format tanggal
+            const namaHari = hari[now.getDay()];
+            const tanggal = now.getDate();
+            const namaBulan = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            
+            const dateString = `${tanggal} ${namaBulan} ${tahun}`;
+            
+            // Update tampilan hari dan tanggal
+            document.getElementById('dayName').textContent = namaHari;
+            document.getElementById('dateInfo').textContent = dateString;
+        }
+
+        // Update jam pertama kali
+        updateClock();
+        
+        // Update jam setiap 1000 milidetik (1 detik)
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
