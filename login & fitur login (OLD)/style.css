@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #fff;
+    /* Mencegah munculnya scrollbar yang tidak diinginkan */
+    overflow: hidden; 
+}
+
+.container {
+    display: flex;
+    width: 100vw;   /* 100% lebar layar */
+    height: 100vh;  /* 100% tinggi layar */
+    background: #fff;
+}
+
+/* Kolom Kiri */
+.left-column {
+    flex: 1;
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    color: white;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-content {
+    max-width: 500px;
+}
+
+.brand-content h2 {
+    font-size: 42px; /* Dibuat sedikit lebih besar untuk layar full */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.brand-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Kolom Kanan */
+.right-column {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Memastikan form berada tepat di tengah kolom */
+}
+
+/* Wrapper pembatas agar input tidak terlalu panjang ke samping */
+.form-wrapper {
+    width: 100%;
+    max-width: 400px; 
+}
+
+.auth-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.auth-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h3 {
+    font-size: 28px;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #6b7280;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+/* Tombol Google */
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.google-btn:hover {
+    background: #f9fafb;
+}
+
+/* Garis Pemisah */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+.divider span {
+    padding: 0 10px;
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+/* Form Styles */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px; /* Sedikit dilebarkan agar lebih nyaman */
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #4f46e5;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.remember-me {
+    font-size: 13px;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.link {
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background: #4338ca;
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+}
+
+/* Responsivitas untuk layar ponsel/tablet kecil */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-column {
+        flex: 0.3;
+        padding: 30px;
+        text-align: center;
+    }
+    .brand-content h2 {
+        font-size: 28px;
+    }
+    .brand-content p {
+        font-size: 14px;
+    }
+    .right-column {
+        flex: 0.7;
+        padding: 30px 20px;
+        justify-content: flex-start;
+        overflow-y: auto; /* Mengizinkan scroll di HP jika form terlalu panjang */
+    }
+}

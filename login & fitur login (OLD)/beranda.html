@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Ruang Karya</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .dashboard {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .logout-btn {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2>Dashboard Sekolah</h2>
+        <img id="user-photo" class="profile-img" alt="Foto Profil" src="">
+        <h1 id="user-name">Memuat...</h1>
+        <p id="user-email"></p>
+
+        <button id="logout-btn" class="logout-btn">Keluar (Logout)</button>
+    </div>
+
+    <script>
+        // 1. CEK STATUS LOGIN SAAT HALAMAN DIBUKA
+        // Cari data login baik di localStorage (Remember Me) atau sessionStorage (Tanpa Remember Me)
+        const userStr = localStorage.getItem('aktif_user') || sessionStorage.getItem('aktif_user');
+
+        if (!userStr) {
+            // Jika tidak ada data login, paksa kembali ke index.html
+            alert("Anda belum login! Silakan masuk terlebih dahulu.");
+            window.location.href = "index.html";
+        } else {
+            // Jika ada, tampilkan datanya
+            const user = JSON.parse(userStr);
+            document.getElementById('user-name').innerText = "Halo, " + user.name;
+            document.getElementById('user-email').innerText = user.email;
+            document.getElementById('user-photo').src = user.photo;
+        }
+
+        // 2. FUNGSI LOGOUT
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            // Hapus data login dari memori browser
+            localStorage.removeItem('aktif_user');
+            sessionStorage.removeItem('aktif_user');
+            
+            // Kembalikan ke halaman login
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>

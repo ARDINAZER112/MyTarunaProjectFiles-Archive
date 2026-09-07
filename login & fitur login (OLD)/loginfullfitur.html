@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk / Daftar - Ruang Karya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Kolom Kiri: Visual / Deskripsi Aplikasi -->
+        <div class="left-column">
+            <div class="brand-content">
+                <h2>Ruang Karya</h2>
+                <p>Platform untuk menulis, mengunggah draf, dan mempublikasikan karya terbaikmu. Kelola berbagai format dokumen dengan mudah dan ringan.</p>
+            </div>
+        </div>
+
+        <!-- Kolom Kanan: Area Form -->
+        <div class="right-column">
+            <div class="form-wrapper">
+                
+                <!-- BAGIAN LOGIN -->
+                <div id="login-section" class="auth-section active">
+                    <h3>Selamat Datang Kembali</h3>
+                    <p>Silakan masuk ke akun Anda untuk melanjutkan.</p>
+                    
+                    <div id="google-btn-container" style="display: flex; justify-content: center; margin-bottom: 20px;"></div>
+                    
+                    <div class="divider"><span>atau dengan email</span></div>
+
+                    <form id="login-form">
+                        <div class="input-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required placeholder="nama@email.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required placeholder="••••••••">
+                        </div>
+                        <div class="form-actions">
+                            <label class="remember-me">
+                                <input type="checkbox" id="remember-me" checked> Ingat Saya
+                            </label>
+                            <a href="#" class="link" onclick="switchTab('forgot')">Lupa Password?</a>
+                        </div>
+                        <button type="submit" class="submit-btn">Masuk</button>
+                    </form>
+                    <p class="switch-form">Belum punya akun? <a href="#" class="link" onclick="switchTab('register')">Daftar sekarang</a></p>
+                </div>
+
+                <!-- BAGIAN DAFTAR -->
+                <div id="register-section" class="auth-section">
+                    <h3>Buat Akun Baru</h3>
+                    <p>Mulai unggah dan kelola ceritamu hari ini.</p>
+
+                    <form id="register-form">
+                        <div class="input-group">
+                            <label for="reg-name">Nama Lengkap</label>
+                            <input type="text" id="reg-name" required placeholder="Penulis Hebat">
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" required placeholder="nama@email.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" required placeholder="Minimal 6 karakter">
+                        </div>
+                        <button type="submit" class="submit-btn">Daftar</button>
+                    </form>
+                    <p class="switch-form">Sudah punya akun? <a href="#" class="link" onclick="switchTab('login')">Masuk di sini</a></p>
+                </div>
+                
+                <!-- BAGIAN LUPA PASSWORD -->
+                <div id="forgot-section" class="auth-section">
+                    <h3>Atur Ulang Password</h3>
+                    <p>Masukkan email Anda, dan kami akan mengirimkan tautan untuk mengatur ulang password.</p>
+
+                    <form id="forgot-form">
+                        <div class="input-group">
+                            <label for="forgot-email">Email</label>
+                            <input type="email" id="forgot-email" required placeholder="nama@email.com">
+                        </div>
+                        <button type="submit" class="submit-btn">Kirim Tautan Reset</button>
+                    </form>
+                    <p class="switch-form"><a href="#" class="link" onclick="switchTab('login')">Kembali ke halaman Masuk</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modul Firebase dan Skrip Utama -->
+    <script src="app.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
